@@ -5,7 +5,7 @@ public class ProductWiseSumWithHashMap {
 
     public static void main(String[] args) {
 
-        // Sample data: {productName, id, amount}
+        // Sample data: { productName, id, amount }
         String[][] data = {
             {"Apple",  "101", "500"},
             {"Mango",  "102", "300"},
@@ -15,22 +15,21 @@ public class ProductWiseSumWithHashMap {
             {"Banana", "102", "250"}
         };
 
-        // HashMap: product name → total sum
+        // HashMap: key = product name, value = total sum
         HashMap<String, Integer> productSum = new HashMap<>();
 
-        // Single loop mein saara kaam ho jayega
+        // Single loop: read each row and accumulate sum by product
         for (String[] row : data) {
             String product = row[0];
-            int amount  = Integer.parseInt(row[2]);
+            int amount = Integer.parseInt(row[2]);
 
-            // Agar key exist kare toh purana value + naya amount
-            // Nahi toh sirf naya amount rakh do
+            // getOrDefault returns 0 if key not found, else existing sum
             productSum.put(product,
                 productSum.getOrDefault(product, 0) + amount);
         }
 
-        // Result print karo
-        System.out.println("=== Product-wise Sum (HashMap ke saath) ===");
+        // Print the result
+        System.out.println("=== Product-wise Sum (With HashMap) ===");
         System.out.printf("%-15s %s%n", "Product", "Total Amount");
         System.out.println("----------------------------");
 
@@ -41,9 +40,9 @@ public class ProductWiseSumWithHashMap {
     }
 }
 
-OUTPUT: 
 
- === Product-wise Sum (HashMap ke saath) ===
+ Output:
+ === Product-wise Sum (With HashMap) ===
  Product         Total Amount
  ----------------------------
  Apple           700
