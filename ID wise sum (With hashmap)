@@ -1,11 +1,11 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class IDWiseSumWithHashMap {
+public class ProductWiseSumWithHashMap {
 
     public static void main(String[] args) {
 
-        // Sample data: {productName, id, amount}
+        // Sample data: { productName, id, amount }
         String[][] data = {
             {"Apple",  "101", "500"},
             {"Mango",  "102", "300"},
@@ -15,38 +15,36 @@ public class IDWiseSumWithHashMap {
             {"Banana", "102", "250"}
         };
 
-        // HashMap: ID → total sum
-        HashMap<String, Integer> idSum = new HashMap<>();
+        // HashMap: key = product name, value = total sum
+        HashMap<String, Integer> productSum = new HashMap<>();
 
-        // Single loop — har row se ID aur amount uthao
+        // Single loop: read each row and accumulate sum by product
         for (String[] row : data) {
-            String id    = row[1];
-            int amount   = Integer.parseInt(row[2]);
+            String product = row[0];
+            int amount = Integer.parseInt(row[2]);
 
-            // getOrDefault: agar ID pehli baar aayi toh 0, warna purana sum
-            idSum.put(id,
-                idSum.getOrDefault(id, 0) + amount);
+            // getOrDefault returns 0 if key not found, else existing sum
+            productSum.put(product,
+                productSum.getOrDefault(product, 0) + amount);
         }
 
-        // Result print karo
-        System.out.println("=== ID-wise Sum (HashMap ke saath) ===");
-        System.out.printf("%-10s %s%n", "ID", "Total Amount");
-        System.out.println("----------------------");
+        // Print the result
+        System.out.println("=== Product-wise Sum (With HashMap) ===");
+        System.out.printf("%-15s %s%n", "Product", "Total Amount");
+        System.out.println("----------------------------");
 
-        for (Map.Entry<String, Integer> entry : idSum.entrySet()) {
-            System.out.printf("%-10s %d%n",
+        for (Map.Entry<String, Integer> entry : productSum.entrySet()) {
+            System.out.printf("%-15s %d%n",
                 entry.getKey(), entry.getValue());
         }
     }
 }
 
 
-OUTPUT: 
-
-=== ID-wise Sum (HashMap ke saath) ===
- ID         Total Amount
- ----------------------
- 101        650
- 102        550
- 103        200
- 104        400
+ Output:
+ === Product-wise Sum (With HashMap) ===
+ Product         Total Amount
+ ----------------------------
+ Apple           700
+ Mango           700
+ Banana          400
