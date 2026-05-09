@@ -1,10 +1,8 @@
-import java.util.Scanner;
-
-public class ProductWiseSumNoHashMap {
+public class ProductWiseSumWithoutHashMap {
 
     public static void main(String[] args) {
 
-        // Sample data: {productName, id, amount}
+        // Sample data: { productName, id, amount }
         String[][] data = {
             {"Apple",  "101", "500"},
             {"Mango",  "102", "300"},
@@ -14,11 +12,11 @@ public class ProductWiseSumNoHashMap {
             {"Banana", "102", "250"}
         };
 
-        // Unique products track karne ke liye array
+        // Array to store unique product names
         String[] products = new String[data.length];
         int count = 0;
 
-        // Step 1: Unique products nikalo
+        // Step 1: Extract all unique product names
         for (String[] row : data) {
             String product = row[0];
             boolean found = false;
@@ -35,8 +33,8 @@ public class ProductWiseSumNoHashMap {
             }
         }
 
-        // Step 2: Har product ka sum nikalo
-        System.out.println("=== Product-wise Sum (Bina HashMap) ===");
+        // Step 2: For each unique product, calculate the total sum
+        System.out.println("=== Product-wise Sum (Without HashMap) ===");
         System.out.printf("%-15s %s%n", "Product", "Total Amount");
         System.out.println("----------------------------");
 
@@ -55,9 +53,8 @@ public class ProductWiseSumNoHashMap {
 }
 
 
-OUTPUT: 
-
-=== Product-wise Sum (Bina HashMap) ===
+ Output:
+ === Product-wise Sum (Without HashMap) ===
  Product         Total Amount
  ----------------------------
  Apple           700
